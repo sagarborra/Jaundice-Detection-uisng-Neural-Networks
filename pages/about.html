@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>JDN</title>
+</head>
+
+<body bgcolor="#c5abc7">
+
+    <center>
+        <header>
+            <h1>Jaundice Detection Using Neural Network</h1>
+        </header>
+
+        </head>
+
+        <section style="color: white;">
+            <nav id="navbar">
+
+
+                <form action="/" method="POST">
+                    {% csrf_token %}
+                    <input class="button3" style="width: 100%; " type="Submit" value="Home">
+                </form>
+
+                <form action="/wait" method="POST">
+                    {% csrf_token %}
+                    <input class="button3" style="width: 100%;" type="Submit" value="Train ">
+                </form>
+
+                <form action="/AddPatient " method="POST ">
+                    {% csrf_token %}
+                    <input class="button3" style="width: 100%;" type="Submit" value="Get Report" onclick="move()">
+                </form>
+
+                <button class="button3" onclick=window.location='/'>About</button>
+
+            </nav>
+
+            <article style="background: #4d5180;">
+                <!-- #2c2e49; -->
+                <div style="color: white;">
+                    <h1 style="background: #aa2424 ;color: white; ">Department of Information Science and Engineering <br> Siddaganga Institute of Technology, Tumakuru</h1>
+                    <hr>
+                    <h3>Under the Guidance of <br> Dr. H S Jayanna <br> Head of the Department <br> Dept. of ISE, SIT, Tumakuru <br>
+                    </h3>
+
+                </div>
+                <br>
+                <div>
+
+                    <div>
+                        <div class="row1">
+                            <div class="column1" onclick="openTab('b1');" style="color: black; background:rgb(156, 80, 80);">
+                                Aim
+                            </div>
+                            <div class="column1" onclick="openTab('b2');" style="color: black; background:rgb(182, 139, 139);">
+                                Objective
+                            </div>
+                            <div class="column1" onclick="openTab('b3');" style=" color: black; background:rgb(156, 80, 80);">
+                                Conclusion
+                            </div>
+                        </div>
+
+                        <!-- Full-width columns: (hidden by default) -->
+                        <div id="b1" class="containerTab1" style=" color: black; display:none;background:rgb(126, 99, 85)">
+                            <span onclick="this.parentElement.style.display='none'" class="closebtn1">&times;</span>
+                            <h2>Aim of the Project :</h2>
+                            <h4 style="size: 20px;">The aim of the project is to develop a user-friendly application to detect jaundice with the help of an eye image. <br> The project involves developing the technique for identifying Jaundice using both the symptoms as well
+                                as <br> the predominant image processing technique. We are planning to get maximum level of accuracy with the image processing. <br> The project also aims at the maximum effective utilization of the deep learning algorithms
+                                in order to produce accurate results. <br>
+                            </h4>
+                        </div>
+
+                        <div id="b2" class="containerTab1" style="color: black; display:none;background:rgb(161, 130, 114);">
+                            <span onclick="this.parentElement.style.display='none'" class="closebtn1">&times;</span>
+                            <h2>Objective :</h2>
+                            <h4>
+                                <li>Our primary objective is to collect the sclera of the patient's eye image.</li>
+                                <li> The next objective is to get valuable information from the patient in the form of symptoms and quality images.</li>
+                                <li>Once the image and Symptoms of the patient is obtained, we move to the image processing techniques.</li>
+                                <li>Finally, we corelate the symptoms given with the processed result from the image processing techniques and produce the report.
+                                </li>
+                            </h4>
+                        </div>
+
+                        <div id="b3" class="containerTab1" style="color: black; display:none;background:rgb(126, 99, 85);">
+                            <span onclick="this.parentElement.style.display='none'" class="closebtn1">&times;</span>
+                            <h2>Conclusion :</h2>
+                            <h4> We are successfully able to predict the patient's status above 87% accurately within a short period of time. CNN perfectly suits in that field, and it doesn’t require training for each prediction. The model is saved when the
+                                train happens. We just get the accurate results as witnessed earlier with the support of patient.
+                            </h4>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- <div>
+
+                    <div style="float: left; color: black;">
+
+                        <h2>How it is Work ?</h2>
+                        <h3>Methodology :</h3>
+
+                        <h4 style="float: left;">
+                            <li> Convolution </li>
+                            <li> Max Pooling </li>
+                            <li> Flattening </li>
+                            <li> Full Connection </li>
+                        </h4>
+
+
+
+
+                        <br>
+                        <img src="../media/about/pooling.gif" alt="Model" style="width: 30%;height: inherit;">
+
+                    </div>
+
+
+                    <div class="row1">
+
+                        <img src="../media/about/model2.jpeg" alt="Model" style="width: 80%;height: inherit;">
+                    </div>
+
+
+                </div>
+                </div> -->
+                <br><br>
+                <h2>Block Diagram </h2>
+                <img src="../media/about/Picture4.png" alt="Model" style="width: 95%;height:28%;">
+                <br>
+                <h2>Flow Diagram</h2>
+                <br>
+                <br> <img src="../media/about/model2.jpeg" alt="Model" style="width: 95%;height:28%;">
+
+
+                <br>
+                <br>
+                <hr style="width: 50%; border: black solid 3px;">
+                <h3>Developed by</h3>
+                </div>
+                <div style="float:left;">
+                    <center>
+                        <div class="row1">
+                            <div class="column">
+                                <div class="flip-card ">
+                                    <div class="flip-card-inner ">
+                                        <div class="flip-card-front ">
+                                            <img src="../media/about/1SI18IS011.jfif" alt="B Sagar " style="width:300px;height:300px; ">
+                                            <h2>B Sagar</h2>
+                                        </div>
+                                        <div class="flip-card-back ">
+                                            <h1>B Sagar</h1>
+                                            <h2>1SI18IS011</h2>
+                                            <h4>Information Science and Engineering</h4>
+                                            <h4>3rd Year</h4>
+                                            <h3>Role :</h3>
+                                            <h5>Problem Analyst <br>Data Analyst <br>Debugger</h5>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="column ">
+
+                                <div class="flip-card ">
+                                    <div class="flip-card-inner ">
+                                        <div class="flip-card-front ">
+                                            <img src="../media/about/1SI18IS062.jfif " alt="Yashvanth D " style="width:300px;height:300px; ">
+                                            <h2>Yashvanth D</h2>
+                                        </div>
+                                        <div class="flip-card-back ">
+                                            <h1>Yashvanth D</h1>
+                                            <h2>1SI18IS062</h2>
+                                            <h4>Information Science and Engineering</h4>
+                                            <h4>3rd Year</h4>
+                                            <h3>Role :</h3>
+                                            <h5>Problem Analyst <br> Developer <br>Data Analyst</h5>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="column ">
+                                <div class="flip-card ">
+                                    <div class="flip-card-inner ">
+                                        <div class="flip-card-front ">
+                                            <img src="../media/about/1SI19IS405.jfif" alt="Ujwal Patil " style="width:300px;height:300px; ">
+                                            <h2>Ujwal Patil</h2>
+                                        </div>
+                                        <div class="flip-card-back ">
+                                            <h1>Ujwal Patil</h1>
+                                            <h2>1SI19IS405</h2>
+                                            <h4>Information Science and Engineering</h4>
+                                            <h4>3rd Year</h4>
+                                            <h3>Role :</h3>
+                                            <h5>Data Analyst</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </center>
+                    </div>
+                </div>
+
+
+
+
+            </article>
+
+        </section>
+        <footer>
+            By team of Siddaganga Institute of Technology &#169
+        </footer>
+
+
+
+
+</body>
+<script>
+    function openTab(tabName) {
+        var i, x;
+        x = document.getElementsByClassName("containerTab");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        document.getElementById(tabName).style.display = "block";
+    }
+</script>
+
+<link rel="stylesheet " href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css ">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js "></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js "></script>
+<link rel="stylesheet " href="C:\Users\Admin\OneDrive\Desktop\Mini\CODES\DjangoDJN\JDN\pages\button.css ">
+
+</html>
+
+<!DOCTYPE html>
+<html>
+<style>
+    .column {
+        float: left;
+        width: 30%;
+        padding: 0 20px;
+    }
+    /* Remove extra left and right margins, due to padding */
+    
+    .row {
+        width: 100%;
+        margin: 0 50px;
+    }
+    /* Clear floats after the columns */
+    
+    .row:after {
+        content: " ";
+        display: table;
+        clear: both;
+    }
+    /* Responsive columns */
+    
+    @media screen and (max-width: 600px) {
+        .column {
+            width: 100%;
+            display: block;
+            margin-bottom: 10px;
+            margin: 0 0;
+        }
+    }
+    /* Style the counter cards */
+    
+    .card {
+        box-shadow: 0 8px 50px 20px rgba(2, 2, 2, 0.2);
+        padding: 20px;
+        text-align: center;
+        margin: 20px;
+        background-color: #f1f1f1;
+    }
+    
+    .card:hover {
+        box-shadow: 0 80px 160px 0 rgba(245, 0, 0, 0.521);
+    }
+    
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    .flip-card {
+        background-color: transparent;
+        width: 300px;
+        height: 300px;
+        margin: 20px;
+        perspective: 1000px;
+        box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2);
+    }
+    
+    .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+        box-shadow: 0 20px 40px 0 rgba(255, 255, 255, 0.219);
+    }
+    
+    .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+        box-shadow: 0 40px 100px 0 rgba(245, 0, 0, 0.521);
+    }
+    
+    .flip-card-front,
+    .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        transform: scale(1);
+    }
+    
+    .flip-card-front {
+        border-radius: 10rem;
+        background-color: #bbb;
+        color: black;
+    }
+    
+    .flip-card-back {
+        background-color: #08f543a9;
+        color: rgb(0, 0, 0);
+        transform: rotateY(180deg);
+    }
+    
+    nav {
+        float: left;
+        width: 20%;
+        height: 3000px;
+        /* only for demonstration, should be removed */
+        background: #ccc;
+        padding: 20px;
+    }
+    
+    nav ul {
+        list-style-type: none;
+    }
+    
+    article {
+        float: left;
+        padding: 20px;
+        height: 3000px;
+        width: 80%;
+        background: rgb(248, 237, 237);
+        /* only for demonstration, should be removed */
+    }
+    /* Clear floats after the columns */
+    
+    section::after {
+        content: " ";
+        display: table;
+        clear: both;
+        height: 200%;
+        width: 80%;
+    }
+    
+    * {
+        box-sizing: border-box;
+    }
+    /* The grid: Three equal columns that floats next to each other */
+    
+    .column1 {
+        float: left;
+        width: 33.33%;
+        padding: 10px;
+        text-align: center;
+        font-size: 25px;
+        cursor: pointer;
+        color: white;
+    }
+    
+    .containerTab1 {
+        padding: 20px;
+        color: white;
+    }
+    /* Clear floats after the columns */
+    
+    .row1:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    /* Closable button inside the container tab */
+    
+    .closebtn1 {
+        float: right;
+        color: white;
+        font-size: 40px;
+        cursor: pointer;
+    }
+    
+    .header {
+        background-color: #f1f1f1;
+        padding: 30px;
+        text-align: center;
+    }
+    
+    #navbar {
+        overflow: hidden;
+        background-color: #333;
+    }
+    
+    #navbar a {
+        float: left;
+        display: block;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+    
+    #navbar a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+    
+    #navbar a.active {
+        background-color: #04AA6D;
+        color: white;
+    }
+    
+    .content {
+        padding: 16px;
+    }
+    
+    .sticky {
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+    
+    .sticky+.content {
+        padding-top: 60px;
+    }
+    
+    #myProgress {
+        width: 100%;
+        background-color: #ddd;
+    }
+    
+    #myBar {
+        width: 1%;
+        height: 30px;
+        background-color: #4CAF50;
+    }
+    
+    .button {
+        display: inline-block;
+        border-radius: 4px;
+        background-color: #f4511e;
+        border: none;
+        color: #FFFFFF;
+        text-align: center;
+        font-size: 28px;
+        padding: 20px;
+        width: 200px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;
+    }
+    
+    .button span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+    }
+    
+    .button span:after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+    }
+    
+    .button:hover span {
+        padding-right: 25px;
+    }
+    
+    .button:hover span:after {
+        opacity: 1;
+        right: 0;
+    }
+    
+    .button2 {
+        position: relative;
+        background-color: #4CAF50;
+        border: none;
+        font-size: 18px;
+        color: #FFFFFF;
+        padding: 20px;
+        width: 100%;
+        text-align: center;
+        transition-duration: 0.1s;
+        text-decoration: none;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    
+    .button2:after {
+        content: " ";
+        background: #f1f1f1;
+        display: block;
+        position: absolute;
+        padding-top: 300%;
+        padding-left: 350%;
+        margin-left: -20px !important;
+        margin-top: -120%;
+        opacity: 0;
+        transition: all 0.2s
+    }
+    
+    .button2:active:after {
+        padding: 0;
+        margin: 0;
+        opacity: 1;
+        transition: 0s;
+    }
+    
+    .button3 {
+        display: inline-block;
+        padding: 15px 25px;
+        width: 100%;
+        font-size: 24px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        color: #fff;
+        background-color: #4CAF50;
+        border: none;
+        border-radius: 0px;
+        box-shadow: 0 15px #333;
+    }
+    
+    .button3:hover {
+        background-color: #3e8e41
+    }
+    
+    .button3:active {
+        background-color: #3e8e41;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+    }
+    
+    * {
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    /* Style the header */
+    
+    header {
+        background-color: #666;
+        padding: 30px;
+        text-align: center;
+        font-size: 35px;
+        color: white;
+    }
+    /* Create two columns/boxes that floats next to each other */
+    /* Style the list inside the menu */
+    /* Style the footer */
+    
+    input.button {
+        width: 20%;
+        height: 20px;
+    }
+    
+    footer {
+        background-color: rgba(0, 0, 0, 0.349);
+        padding: 10px;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        text-align: center;
+        color: white;
+    }
+    /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+    
+    @media (max-width: 600px) {
+        nav,
+        article {
+            width: 100%;
+            height: auto;
+        }
+    }
+    
+    .header {
+        background-color: #f1f1f1;
+        padding: 30px;
+        text-align: center;
+    }
+    
+    #navbar {
+        overflow: hidden;
+        background-color: #333;
+    }
+    
+    #navbar a {
+        float: left;
+        display: block;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+    
+    #navbar a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+    
+    #navbar a.active {
+        background-color: #04AA6D;
+        color: white;
+    }
+    
+    .content {
+        padding: 16px;
+    }
+    
+    .sticky {
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+    
+    .sticky+.content {
+        padding-top: 60px;
+    }
+</style>
+
+
+
+
+<script>
+    var i = 0;
+
+    function move() {
+        if (i == 0) {
+            i = 1;
+            var elem = document.getElementById("myBar ");
+            var width = 1;
+            var id = setInterval(frame, 1000);
+
+            function frame() {
+                if (width >= 100) {
+                    clearInterval(id);
+                    i = 0;
+                } else {
+                    width++;
+                    elem.style.width = width + "% ";
+                }
+            }
+        }
+    }
+</script>
+</center>
+
+</body>
+
+</html>
